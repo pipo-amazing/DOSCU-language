@@ -1,0 +1,79 @@
+{
+  "scopeName": "source.doscu",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#directives" },
+    { "include": "#types" },
+    { "include": "#keywords" },
+    { "include": "#constants" },
+    { "include": "#builtins" },
+    { "include": "#numbers" },
+    { "include": "#operators" },
+    { "include": "#functions" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "name": "comment.line.double-slash.doscu", "match": "//.*$" },
+        { "name": "comment.block.doscu", "begin": "/\\*", "end": "\\*/" }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.doscu",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [{ "name": "constant.character.escape.doscu", "match": "\\\\." }]
+        },
+        {
+          "name": "string.quoted.single.doscu",
+          "begin": "'",
+          "end": "'",
+          "patterns": [{ "name": "constant.character.escape.doscu", "match": "\\\\." }]
+        }
+      ]
+    },
+    "directives": {
+      "patterns": [
+        { "name": "keyword.control.directive.doscu", "match": "#(?:head|part)\\b" },
+        { "name": "keyword.control.directive.include.doscu", "match": "#include\\b" }
+      ]
+    },
+    "types": {
+      "name": "storage.type.doscu",
+      "match": "\\b(int|float|double|bool|string|char|auto)\\b"
+    },
+    "keywords": {
+      "patterns": [
+        { "name": "keyword.control.doscu", "match": "\\b(if|else|while|return|break|continue)\\b" },
+        { "name": "keyword.operator.logical.doscu", "match": "\\b(and|or|xor)\\b" }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        { "name": "constant.language.boolean.doscu", "match": "\\b(true|false)\\b" },
+        { "name": "constant.language.numeric.doscu", "match": "\\b(pi|e)\\b" },
+        { "name": "constant.language.null.doscu", "match": "\\bnull\\b" },
+        { "name": "support.function.output.doscu", "match": "\\b(cout|endl)\\b" }
+      ]
+    },
+    "builtins": {
+      "name": "support.function.builtin.doscu",
+      "match": "\\b(abs|round|floor|ceil|sqrt|sin|cos|tan|log|print|wait|stop)\\b(?=\\s*\\()|\\b(log\\.2|log\\.10|bit\\.not|bit\\.and|bit\\.or|out\\.push|out\\.report)\\b(?=\\s*\\()"
+    },
+    "numbers": {
+      "name": "constant.numeric.doscu",
+      "match": "(?<![A-Za-z_])(?:\\d+(?:\\.\\d*)?|\\.\\d+)%?"
+    },
+    "operators": {
+      "name": "keyword.operator.doscu",
+      "match": "\\^\\?|\\^/|<<|==|!=|<=|>=|&&|\\|\\||\\+=|-=|\\*=|/=|[+*/%<>=!^|&-]"
+    },
+    "functions": {
+      "name": "entity.name.function.doscu",
+      "match": "\\b[A-Za-z_][A-Za-z0-9_.]*(?=\\s*\\()"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+#head() {
+    int score = 0;
+}
+
+#part("First", true) {
+    cout << "A" << endl;
+    wait(1000);
+    cout << "B" << endl;
+}

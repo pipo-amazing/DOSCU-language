@@ -1,0 +1,7 @@
+node_modules/
+__pycache__/
+*.py[cod]
+*.vsix
+doscu
+doscu.exe
+doscu.dSYM/

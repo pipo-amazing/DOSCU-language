@@ -1,0 +1,11 @@
+.git/**
+.vscode/**
+node_modules/**
+tests/**
+__pycache__/**
+*.pyc
+*.vsix
+doscu
+doscu.exe
+doscu.dSYM/**
+.DS_Store

@@ -1,0 +1,90 @@
+{
+  "name": "doscu-language",
+  "displayName": "DOSCU Language",
+  "description": "Syntax highlighting and runtime support for the DOSCU scripting language.",
+  "version": "1.0.0",
+  "publisher": "pipo",
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:doscu",
+    "onCommand:doscu.runFile",
+    "onCommand:doscu.stopRun"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "doscu",
+        "aliases": [
+          "DOSCU",
+          "doscu"
+        ],
+        "extensions": [
+          ".doscu"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "doscu",
+        "scopeName": "source.doscu",
+        "path": "./syntaxes/doscu.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "doscu.runFile",
+        "title": "DOSCU: Run Current File",
+        "category": "DOSCU"
+      },
+      {
+        "command": "doscu.stopRun",
+        "title": "DOSCU: Stop Current Run",
+        "category": "DOSCU"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "doscu.runFile",
+          "when": "resourceLangId == doscu",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "doscu.runFile",
+          "when": "resourceLangId == doscu",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "doscu.runFile",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorTextFocus && resourceLangId == doscu"
+      }
+    ],
+    "configuration": {
+      "title": "DOSCU",
+      "properties": {
+        "doscu.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Python 3 executable used to launch the DOSCU runner. Set this to a full path if needed."
+        }
+      }
+    }
+  }
+}
